@@ -50,7 +50,7 @@ public class PeliculaController {
 
         String dirAlmacen = "public/images/peliculas/";
         for (Pelicula pelicula : peliculas) {
-        Path imagePath = Paths.get(dirAlmacen + pelicula.getPeliPortada());
+            Path imagePath = Paths.get(dirAlmacen + pelicula.getPeliPortada());
             if (!Files.exists(imagePath)) {
                 pelicula.setPeliPortada("default.jpg");
             }
@@ -80,7 +80,7 @@ public class PeliculaController {
             Model model,
             @RequestParam (required = false) List<Genero> generos, 
             @RequestParam (required = false) List<Idioma> idiomas,
-            @RequestParam (required = false) Integer clasificacionId) {
+            @RequestParam (required = false) Long clasificacionId) {
 
         if (generos == null || generos.isEmpty()){
             result.rejectValue("generos", "error.peliculaDto", "Debe seleccionar al menos un genero.");
@@ -150,7 +150,7 @@ public class PeliculaController {
             String dirAlmacen = "public/images/peliculas/";
             Path imagePath = Paths.get(dirAlmacen + pelicula.getPeliPortada());
             if (!Files.exists(imagePath)) {
-            pelicula.setPeliPortada("default.jpg");
+                pelicula.setPeliPortada("default.jpg");
             }
 
             model.addAttribute("pelicula", pelicula);
@@ -184,7 +184,7 @@ public class PeliculaController {
     @PostMapping("/edit")
     public String actualizarPelicula(Model model, @RequestParam Long id, @Valid @ModelAttribute PeliculaDto peliculaDto,
             BindingResult result, @RequestParam List<Genero> generos, @RequestParam List<Idioma> idiomas,
-            @RequestParam Integer clasificacionId) {
+            @RequestParam Long clasificacionId) {
 
         try {
             Pelicula pelicula = repository.findById(id).get();

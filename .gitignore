@@ -1,0 +1,6 @@
+# Maven y compilados
+metacine/metacine/.mvn
+metacine/metacine/target
+
+# Visual Studio Code
+.vscode/
