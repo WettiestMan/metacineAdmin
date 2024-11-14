@@ -33,7 +33,7 @@
               <div th:each="pelicula : ${clasificacion.peliculas}" th:text="@{${pelicula.nombre} + '(' + ${pelicula.id} + ')'}"></div>
             </td>
             <td style="white-space: nowrap">
-              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${clasificacion.id})}">Editar</a>
+              <a class="btn btn-primary btn-sm" th:href="@{/caracteristicas/edit/clasificacion(id=${clasificacion.id})}">Editar</a>
               <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/clasificacion(id=${clasificacion.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
             </td>
           </tr>
@@ -61,7 +61,7 @@
               <div th:each="pelicula : ${genero.peliculas}" th:text="@{${pelicula.nombre} + '(' + ${pelicula.id} + ')'}"></div>
             </td>
             <td style="white-space: nowrap">
-              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${genero.id})}">Editar</a>
+              <a class="btn btn-primary btn-sm" th:href="@{/caracteristicas/edit/genero(id=${genero.id})}">Editar</a>
               <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/genero(id=${genero.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
             </td>
           </tr>
@@ -89,7 +89,7 @@
               <div th:each="pelicula : ${idioma.peliculas}" th:text="@{${pelicula.nombre} + '(' + ${pelicula.id} + ')'}"></div>
             </td>
             <td style="white-space: nowrap">
-              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${idioma.id})}">Editar</a>
+              <a class="btn btn-primary btn-sm" th:href="@{/caracteristicas/edit/idioma(id=${idioma.id})}">Editar</a>
               <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/idioma(id=${idioma.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
             </td>
           </tr>
@@ -117,7 +117,7 @@
               <div th:each="producto : ${tipoProducto.productos}" th:text="@{${producto.nombre} + '(' + ${producto.id} + ')'}"></div>
             </td>
             <td style="white-space: nowrap">
-              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${tipoProducto.id})}">Editar</a>
+              <a class="btn btn-primary btn-sm" th:href="@{/caracteristicas/edit/tipoProducto(id=${tipoProducto.id})}">Editar</a>
               <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/tipoProducto(id=${tipoProducto.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
             </td>
           </tr>
