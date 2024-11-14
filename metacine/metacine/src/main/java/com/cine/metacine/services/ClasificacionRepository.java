@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cine.metacine.models.Clasificacion;
 
-public interface ClasificacionRepository extends JpaRepository<Clasificacion, Integer>{
+public interface ClasificacionRepository extends JpaRepository<Clasificacion, Long>{
 
 }
  

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Caracteristicas</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center my-4">Página de inicio de características</h1>
+    </div>
+    <div class="container mb-3">
+      <h1 class="text-center my-4">Clasificaciones</h1>
+
+      <a class="btn btn-primary" href="/caracteristicas/create/clasificacion">Crear clasificación</a>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Peliculas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="clasificacion : ${clasificaciones}">
+            <td th:text="${clasificacion.id}"></td>
+            <td th:text="${clasificacion.nombre}"></td>
+            <td>
+              <div th:each="pelicula : ${clasificacion.peliculas}" th:text="@{${pelicula.nombre} + '(' + ${pelicula.id} + ')'}"></div>
+            </td>
+            <td style="white-space: nowrap">
+              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${clasificacion.id})}">Editar</a>
+              <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/clasificacion(id=${clasificacion.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container mb-3">
+      <h1 class="text-center my-4">Géneros</h1>
+
+      <a class="btn btn-primary" href="/caracteristicas/create/genero">Crear género</a>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Peliculas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="genero : ${generos}">
+            <td th:text="${genero.id}"></td>
+            <td th:text="${genero.nombre}"></td>
+            <td>
+              <div th:each="pelicula : ${genero.peliculas}" th:text="@{${pelicula.nombre} + '(' + ${pelicula.id} + ')'}"></div>
+            </td>
+            <td style="white-space: nowrap">
+              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${genero.id})}">Editar</a>
+              <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/genero(id=${genero.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container mb-3">
+      <h1 class="text-center my-4">Idiomas</h1>
+
+      <a class="btn btn-primary" href="/caracteristicas/create/idioma">Crear idioma</a>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Peliculas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="idioma : ${idiomas}">
+            <td th:text="${idioma.id}"></td>
+            <td th:text="${idioma.nombre}"></td>
+            <td>
+              <div th:each="pelicula : ${idioma.peliculas}" th:text="@{${pelicula.nombre} + '(' + ${pelicula.id} + ')'}"></div>
+            </td>
+            <td style="white-space: nowrap">
+              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${idioma.id})}">Editar</a>
+              <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/idioma(id=${idioma.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container mb-3">
+      <h1 class="text-center my-4">Tipos de productos</h1>
+
+      <a class="btn btn-primary" href="/caracteristicas/create/tipoProducto">Crear tipo de producto</a>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Productos</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="tipoProducto : ${tipoProductos}">
+            <td th:text="${tipoProducto.id}"></td>
+            <td th:text="${tipoProducto.nombre}"></td>
+            <td>
+              <div th:each="producto : ${tipoProducto.productos}" th:text="@{${producto.nombre} + '(' + ${producto.id} + ')'}"></div>
+            </td>
+            <td style="white-space: nowrap">
+              <a class="btn btn-primary btn-sm" th:href="@{/peliculas/edit(id=${tipoProducto.id})}">Editar</a>
+              <a class="btn btn-danger btn-sm" th:href="@{/caracteristicas/delete/tipoProducto(id=${tipoProducto.id})}" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container mb-3">
+      <a class="btn btn-danger" href="../index.html">Volver</a>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

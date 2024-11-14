@@ -16,18 +16,25 @@ import jakarta.persistence.Table;
 public class Clasificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String nombre;
 
     @OneToMany(mappedBy = "clasificacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Pelicula> peliculas = new ArrayList<>();
 
-    public int getId() {
+    public Clasificacion() {
+    }
+
+    public Clasificacion(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,5 +44,13 @@ public class Clasificacion {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Pelicula> getPeliculas() {
+        return peliculas;
+    }
+
+    public void setPeliculas(List<Pelicula> peliculas) {
+        this.peliculas = peliculas;
     }
 }

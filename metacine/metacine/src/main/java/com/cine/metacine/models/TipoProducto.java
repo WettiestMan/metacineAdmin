@@ -16,19 +16,25 @@ import jakarta.persistence.Table;
 public class TipoProducto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String nombre;
 
     @OneToMany(mappedBy = "tipoProducto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Producto> productos = new ArrayList<>();
 
+    public TipoProducto() {
+    }
 
-    public int getId() {
+    public TipoProducto(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,5 +44,13 @@ public class TipoProducto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Producto> getProductos() {
+        return this.productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 }
