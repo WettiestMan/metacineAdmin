@@ -178,6 +178,172 @@ public class CaracteristicasController {
         return "redirect:/caracteristicas";
     }
 
+    @GetMapping("/edit/clasificacion")
+    public String showEditClasificacion(Model model, @RequestParam Long id) {
+        final Optional<Clasificacion> clasificacion = clasificacionRepository.findById(id);
+
+        if (!clasificacion.isPresent()) {
+            return "redirect:/caracteristicas";
+        }
+
+        final var clasificacionRef = clasificacion.get();
+        model.addAttribute("clasificacion", clasificacionRef);
+
+        final var clasificacionDto = new ClasificacionDto();
+        clasificacionDto.setNombre(clasificacionRef.getNombre());
+        model.addAttribute("clasificacionDto", clasificacionDto);
+
+        return "caracteristicas/editarClasificacion";
+    }
+
+    @PostMapping("/edit/clasificacion")
+    public String editClasificacion(Model model, @RequestParam Long id,
+                                    @ModelAttribute ClasificacionDto clasificacionDto,
+                                    BindingResult result) {
+        final Optional<Clasificacion> clasificacion = clasificacionRepository.findById(id);
+         
+        if (clasificacion.isPresent()) {
+            final var clasificacionRef = clasificacion.get();
+
+            if (result.hasErrors()) {
+               // no entendí muy bien tu manera de hacer esto, lo acabo de
+               // escribir así (tal vez sea skill issue por mi parte, pero)
+               model.addAttribute("clasificacion", clasificacionRef);
+               model.addAttribute("clasificacionDto", clasificacionDto);
+               return "caracteristicas/editarClasificacion";
+            }
+   
+            clasificacionRef.setNombre(clasificacionDto.getNombre());
+   
+            clasificacionRepository.save(clasificacionRef);
+        }
+
+        return "redirect:/caracteristicas";
+    }
+
+    @GetMapping("/edit/genero")
+    public String showEditGenero(Model model, @RequestParam Long id) {
+        final Optional<Genero> genero = generoRepository.findById(id);
+
+        if (!genero.isPresent()) {
+            return "redirect:/caracteristicas";
+        }
+
+        final var generoRef = genero.get();
+        model.addAttribute("genero", generoRef);
+
+        final var generoDto = new GeneroDto();
+        generoDto.setNombre(generoRef.getNombre());
+        model.addAttribute("generoDto", generoDto);
+
+        return "caracteristicas/editarGenero";
+    }
+
+    @PostMapping("/edit/genero")
+    public String editGenero(Model model, @RequestParam Long id,
+                            @ModelAttribute GeneroDto generoDto,
+                            BindingResult result) {
+        final Optional<Genero> genero = generoRepository.findById(id);
+         
+        if (genero.isPresent()) {
+            final var generoRef = genero.get();
+
+            if (result.hasErrors()) {
+               model.addAttribute("genero", generoRef);
+               model.addAttribute("generoDto", generoDto);
+               return "caracteristicas/editarGenero";
+            }
+   
+            generoRef.setNombre(generoDto.getNombre());
+   
+            generoRepository.save(generoRef);
+        }
+
+        return "redirect:/caracteristicas";
+    }
+
+    @GetMapping("/edit/idioma")
+    public String showEditIdioma(Model model, @RequestParam Long id) {
+        final Optional<Idioma> idioma = idiomaRepository.findById(id);
+
+        if (!idioma.isPresent()) {
+            return "redirect:/caracteristicas";
+        }
+
+        final var idiomaRef = idioma.get();
+        model.addAttribute("idioma", idiomaRef);
+
+        final var idiomaDto = new IdiomaDto();
+        idiomaDto.setNombre(idiomaRef.getNombre());
+        model.addAttribute("idiomaDto", idiomaDto);
+
+        return "caracteristicas/editarIdioma";
+    }
+
+    @PostMapping("/edit/idioma")
+    public String editIdioma(Model model, @RequestParam Long id,
+                            @ModelAttribute IdiomaDto idiomaDto,
+                            BindingResult result) {
+        final Optional<Idioma> idioma = idiomaRepository.findById(id);
+         
+        if (idioma.isPresent()) {
+            final var idiomaRef = idioma.get();
+
+            if (result.hasErrors()) {
+               model.addAttribute("idioma", idiomaRef);
+               model.addAttribute("idiomaDto", idiomaDto);
+               return "caracteristicas/editarIdioma";
+            }
+   
+            idiomaRef.setNombre(idiomaDto.getNombre());
+   
+            idiomaRepository.save(idiomaRef);
+        }
+
+        return "redirect:/caracteristicas";
+    }
+
+    @GetMapping("/edit/tipoProducto")
+    public String showEditTipoProducto(Model model, @RequestParam Long id) {
+        final Optional<TipoProducto> tipoProducto = tipoProductoRepository.findById(id);
+
+        if (!tipoProducto.isPresent()) {
+            return "redirect:/caracteristicas";
+        }
+
+        final var tipoProdRef = tipoProducto.get();
+        model.addAttribute("tipoProd", tipoProdRef);
+
+        final var tipoProdDto = new TipoProductoDto();
+        tipoProdDto.setNombre(tipoProdRef.getNombre());
+        model.addAttribute("tipoProdDto", tipoProdDto);
+
+        return "caracteristicas/editarTipoProducto";
+    }
+
+    @PostMapping("/edit/tipoProducto")
+    public String editGenero(Model model, @RequestParam Long id,
+                            @ModelAttribute TipoProductoDto tipoProdDto,
+                            BindingResult result) {
+        final Optional<TipoProducto> tipoProd = tipoProductoRepository.findById(id);
+         
+        if (tipoProd.isPresent()) {
+            final var tipoProdRef = tipoProd.get();
+
+            if (result.hasErrors()) {
+               model.addAttribute("tipoProd", tipoProdRef);
+               model.addAttribute("tipoProdDto", tipoProdDto);
+               return "caracteristicas/editarTipoProducto";
+            }
+   
+            tipoProdRef.setNombre(tipoProdDto.getNombre());
+   
+            tipoProductoRepository.save(tipoProdRef);
+        }
+
+        return "redirect:/caracteristicas";
+    }
+
     @GetMapping("/delete/clasificacion")
     public String deleteClasificacion(@RequestParam Long id) {
         try {

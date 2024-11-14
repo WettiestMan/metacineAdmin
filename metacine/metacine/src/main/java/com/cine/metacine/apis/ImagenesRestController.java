@@ -46,8 +46,7 @@ public class ImagenesRestController {
      * Pelicula.peliPortada
      * 
      * @param filename String: el nombre del archivo a recuperar
-     * @return 200 si devuelve la imagen pedida
-     *         204 si no se encontró la imagen perdida, pero retornó la imagen por defecto
+     * @return 200 si devuelve la imagen pedida o la imagen por defecto
      *         400 si se pide un archivo de extensión incompatible (los tipos compatibles
      *         actualmente son .jpg, .jpeg, .png y .webp) (devuelve un JSON)
      *         404 si no encontró la imágen pedida y no pudo devolver la imagen por defecto
@@ -109,8 +108,7 @@ public class ImagenesRestController {
      * Producto.imagen
      * 
      * @param filename String: el nombre del archivo a recuperar
-     * @return 200 si devuelve la imagen pedida
-     *         204 si no se encontró la imagen perdida, pero retornó la imagen por defecto
+     * @return 200 si devuelve la imagen pedida o la imagen por defecto
      *         400 si se pide un archivo de extensión incompatible (los tipos compatibles
      *         actualmente son .jpg, .jpeg, .png y .webp) (devuelve un JSON)
      *         404 si no encontró la imagen pedida y no pudo devolver la imagen por defecto
